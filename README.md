@@ -1,2 +1,2 @@
 # Frac
-Frac is a modern designed application for creating fractals very easily.
+Frac is a modern designed application for creating fractals very easily. (still in Progress)
