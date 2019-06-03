@@ -13,6 +13,7 @@ package com.mindlabor.frac.main.ui;
 import javax.swing.ImageIcon;
 import com.mindlabor.frac.math.Complex;
 import com.mindlabor.frac.math.Tools;
+import com.mindlabor.frac.renderer.Renderer;
 
 /**
  *
@@ -21,6 +22,8 @@ import com.mindlabor.frac.math.Tools;
 public class RenderPane extends javax.swing.JPanel {
     
     public static boolean updated = true;
+    double startX = 0, startY = 0;
+    boolean startDrag = false, dragged = false;
 
     public RenderPane() {
         initComponents();
@@ -78,8 +81,6 @@ public class RenderPane extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    double startX = 0, startY = 0;
-    boolean startDrag = false, dragged = false;
     private void renderPaneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_renderPaneMousePressed
         startDrag = true;
     }//GEN-LAST:event_renderPaneMousePressed
@@ -151,7 +152,7 @@ public class RenderPane extends javax.swing.JPanel {
 
                     break;
                 case JULIA:
-                    //theta = (-evt.getWheelRotation() * (scrollVelo / 5f) * Math.PI / 20.0 + theta);
+                    Renderer.theta = (-evt.getWheelRotation() * (2f / 5f) * Math.PI / 20.0 + Renderer.theta);
                     //zoomInput.setText("" + juliaZoom);
                     //xInput.setText("" + theta);
                     break;

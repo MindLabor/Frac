@@ -1,13 +1,3 @@
-/* 
- * Frac Community Edition 2019 by MindProjects
- * 
- * Copyright (C) MindProjects - All Rights Reserved
- * 
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * 
- * Written by Samuel Braun <office.samigo.a@gmail.com>, January 2019
- */
 package com.mindlabor.frac.main.ui;
 
 import java.awt.Color;
@@ -17,10 +7,6 @@ import com.mindlabor.frac.main.Main;
 import com.mindlabor.frac.math.Complex;
 import org.apache.commons.math3.exception.MathParseException;
 
-/**
- *
- * @author Samuel Braun <MindProjects at www.mindprojects.ml>
- */
 public class Settings extends javax.swing.JPanel {
     
     public static TYPE type = TYPE.MANDELBROT;

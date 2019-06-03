@@ -97,7 +97,7 @@ public class Wiki extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Frac Community 2019 Guide");
+        jLabel7.setText("Frac 2019 Guide");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -275,7 +275,7 @@ public class Wiki extends javax.swing.JPanel {
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel14.setText("Edit");
+        jLabel14.setText("Editor");
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -449,7 +449,7 @@ public class Wiki extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1952, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

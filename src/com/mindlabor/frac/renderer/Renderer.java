@@ -1,13 +1,3 @@
-/*
- *  Frac Community Edition 2019 by MindProjects
- *  
- *  Copyright (C) MindProjects - All Rights Reserved
- *  
- *  Unauthorized copying of this file, via any medium is strictly prohibited
- *  Proprietary and confidential
- *  
- *  Written by Samuel Braun <office.samigo.a@gmail.com>, January 2019
- */
 package com.mindlabor.frac.renderer;
 
 import java.awt.Color;
@@ -17,16 +7,15 @@ import com.mindlabor.frac.main.ui.Edit;
 import com.mindlabor.frac.main.ui.Settings;
 import com.mindlabor.frac.math.Complex;
 import static com.mindlabor.frac.main.Main.*;
+import com.mindlabor.frac.main.ui.RenderPane;
+import com.mindlabor.frac.main.ui.Window;
 import com.mindlabor.frac.math.Tools;
 import com.mindlabor.frac.pmanager.PManager;
 
-/**
- *
- * @author Samuel Braun <MindProjects at www.mindprojects.ml>
- */
 public class Renderer implements Runnable {
     
-    public static double maxY = 0, minY = 0, maxX = 0, minX = 0;
+    public static double maxY = 0, minY = 0, maxX = 0, minX = 0, theta = 0;
+    public static double[] progressInThreads = new double[Main.AVAILABLE_CORES];
     public static Thread[] threads = new Thread[Main.AVAILABLE_CORES];
     public static BufferedImage image;
     public static boolean miniOption = false;
@@ -65,7 +54,7 @@ public class Renderer implements Runnable {
     
     void waitForThreads(){
         for(Thread thread : threads){
-            try {thread.join();} catch (InterruptedException ex) { ex.printStackTrace(); }
+            try {thread.join();} catch (InterruptedException ex) { ex.printStackTrace(System.out); }
         }
     }
     
@@ -80,7 +69,7 @@ public class Renderer implements Runnable {
             for (int y = 0; y < PManager.height; y += (8-Edit.previewQuality)) {
                 if (!PManager.running) break masterLoop;
                 
-                c = new Complex(Tools.map(x, 0, PManager.width, minX, maxX), -Tools.map(y, 0, PManager.height, maxY, minY));
+                c = calcInitialConstant(x, y);
                 z = calcInitialValue(x, y);
                 
                 int currentIteration = -1;
@@ -92,8 +81,30 @@ public class Renderer implements Runnable {
                 if (currentIteration < PManager.iterations)
                     setRGBForRegion(x, y, getColor(z, currentIteration), (threadIndex+1)*(PManager.width/AVAILABLE_CORES));
             }
+            if (x%10==0) {
+                progressInThreads[threadIndex] = (x-threadIndex*(PManager.width/AVAILABLE_CORES));
+                Window.setProgress(getProgress());
+            }
         }
-        
+        progressInThreads[threadIndex] = PManager.width/AVAILABLE_CORES;
+        Window.setProgress(getProgress());
+    }
+    
+    double getProgress() {
+        double ges = 0;
+        for (double n : progressInThreads){
+            ges+=n;
+        }
+        return ges/(double)PManager.width;
+    }
+    
+    Complex calcInitialConstant(int x, int y) {
+        switch(Settings.type){
+            case GEOM: case MANDELBROT: return new Complex(Tools.map(x, 0, PManager.width, minX, maxX), -Tools.map(y, 0, PManager.height, maxY, minY));
+            case JULIA: return new Complex(Math.cos(Renderer.theta), Math.sin(Renderer.theta));
+            case NEWTON: break;
+        }
+        return null;
     }
     
     Complex calcInitialValue(int x, int y){
@@ -108,15 +119,12 @@ public class Renderer implements Runnable {
     Complex applyFormula(Complex z, Complex c){
         switch(Settings.type){
             case MANDELBROT:
-                return z.times(z).plus(c);
-            case JULIA: break; //return z.times(z).plus(new Complex(radius * Math.cos(theta), radius * Math.sin(theta))); 
+                return z.times(z).plus(c); 
             case NEWTON: break;
+            case JULIA: return z.times(z).plus(c);
             case GEOM: 
-                if(z.abs()<1.5){
-                    return z.times(z).plus(c);
-                }else{
-                    return c.times(c).plus(z);
-                }
+                if (z.abs()<1.5) return z.times(z).plus(c);
+                else return c.times(c).plus(z);
         }
         return null;
     }

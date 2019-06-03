@@ -1,13 +1,3 @@
-/* 
- * Frac Community Edition 2019 by MindProjects
- * 
- * Copyright (C) MindProjects - All Rights Reserved
- * 
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * 
- * Written by Samuel Braun <office.samigo.a@gmail.com>, January 2019
- */
 package com.mindlabor.frac.main.ui;
 
 import java.awt.CardLayout;
@@ -18,10 +8,6 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import com.mindlabor.frac.pmanager.PManager;
 
-/**
- *
- * @author Samuel Braun <MindProjects at www.mindprojects.ml>
- */
 public class Window extends javax.swing.JFrame {
 
     public static boolean previewOptionIsActive = true;
@@ -91,6 +77,7 @@ public class Window extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         help = new javax.swing.JLabel();
         mainPane = new javax.swing.JPanel();
+        progressBar = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Frac Community 2019");
@@ -102,7 +89,7 @@ public class Window extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        masterPanel.setBackground(new java.awt.Color(255, 255, 255));
+        masterPanel.setBackground(new java.awt.Color(54, 33, 89));
 
         sidePanel.setBackground(new java.awt.Color(54, 33, 89));
 
@@ -200,7 +187,7 @@ public class Window extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mindlabor/frac/main/ui/assets/edit_icon.png"))); // NOI18N
-        jLabel3.setText("Edit");
+        jLabel3.setText("Editor");
         jLabel3.setIconTextGap(73);
 
         javax.swing.GroupLayout editOptionLayout = new javax.swing.GroupLayout(editOption);
@@ -284,7 +271,7 @@ public class Window extends javax.swing.JFrame {
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidePanelLayout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(previewOption, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -377,7 +364,7 @@ public class Window extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Untitled - Frac Community 2019");
+        jLabel6.setText("Untitled - Frac 2019");
 
         help.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mindlabor/frac/main/ui/assets/information-icon4.png"))); // NOI18N
@@ -422,15 +409,31 @@ public class Window extends javax.swing.JFrame {
         mainPane.setBackground(new java.awt.Color(255, 255, 255));
         mainPane.setLayout(new java.awt.CardLayout());
 
+        progressBar.setBackground(new java.awt.Color(0, 153, 0));
+
+        javax.swing.GroupLayout progressBarLayout = new javax.swing.GroupLayout(progressBar);
+        progressBar.setLayout(progressBarLayout);
+        progressBarLayout.setHorizontalGroup(
+            progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        progressBarLayout.setVerticalGroup(
+            progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 13, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout masterPanelLayout = new javax.swing.GroupLayout(masterPanel);
         masterPanel.setLayout(masterPanelLayout);
         masterPanelLayout.setHorizontalGroup(
             masterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(masterPanelLayout.createSequentialGroup()
                 .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(masterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(masterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(mainPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, masterPanelLayout.createSequentialGroup()
+                        .addComponent(mainPane, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         masterPanelLayout.setVerticalGroup(
             masterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,7 +441,9 @@ public class Window extends javax.swing.JFrame {
             .addGroup(masterPanelLayout.createSequentialGroup()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mainPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(mainPane, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -455,106 +460,11 @@ public class Window extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
-        close.setBackground(new Color(204, 0, 0));
-    }//GEN-LAST:event_closeMouseEntered
+    private void topPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMousePressed
+        initialClick = evt.getPoint();
+        getComponentAt(initialClick);
+    }//GEN-LAST:event_topPanelMousePressed
 
-    private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
-        close.setBackground(new Color(122, 72, 221));
-    }//GEN-LAST:event_closeMouseExited
-
-    private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
-        if (!dragged) {
-            //Save all Data
-            System.exit(0);
-        }
-        dragged = false;
-    }//GEN-LAST:event_closeMouseReleased
-
-    private boolean dragged = false;
-    private void closeMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseDragged
-        dragged = true;
-    }//GEN-LAST:event_closeMouseDragged
-
-    private void minimizeMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseDragged
-        dragged = true;
-    }//GEN-LAST:event_minimizeMouseDragged
-
-    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
-        minimize.setBackground(new Color(255, 204, 0));
-    }//GEN-LAST:event_minimizeMouseEntered
-
-    private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
-        minimize.setBackground(new Color(122, 72, 221));
-    }//GEN-LAST:event_minimizeMouseExited
-
-    private void minimizeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseReleased
-        if (!dragged) {
-            setState(Frame.ICONIFIED);
-        }
-        dragged = false;
-    }//GEN-LAST:event_minimizeMouseReleased
-
-
-    private void previewOptionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previewOptionMouseEntered
-        previewOptionIsHover = true;
-        updateOptionUI();
-    }//GEN-LAST:event_previewOptionMouseEntered
-
-    private void previewOptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previewOptionMouseExited
-        previewOptionIsHover = false;
-        updateOptionUI();
-    }//GEN-LAST:event_previewOptionMouseExited
-
-    private void previewOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previewOptionMouseClicked
-        previewOptionIsActive = true;
-        settingsOptionIsActive = editOptionIsActive = wikiOptionIsActive = false;
-        updateOptionUI();
-        
-        setOptionPanel("renderPane");
-        
-        setUpdated(true);
-    }//GEN-LAST:event_previewOptionMouseClicked
-
-    private void settingsOptionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsOptionMouseEntered
-        settingsOptionIsHover = true;
-        updateOptionUI();
-    }//GEN-LAST:event_settingsOptionMouseEntered
-
-    private void settingsOptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsOptionMouseExited
-        settingsOptionIsHover = false;
-        updateOptionUI();
-    }//GEN-LAST:event_settingsOptionMouseExited
-
-    private void settingsOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsOptionMouseClicked
-        settingsOptionIsActive = true;
-        previewOptionIsActive = editOptionIsActive = wikiOptionIsActive = false;
-        updateOptionUI();
-
-        setOptionPanel("settings");
-    }//GEN-LAST:event_settingsOptionMouseClicked
-
-    private void editOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editOptionMouseClicked
-        editOptionIsActive = true;
-        previewOptionIsActive = settingsOptionIsActive = wikiOptionIsActive = false;
-        updateOptionUI();
-
-        setOptionPanel("edit");
-        
-        setUpdated(true);
-    }//GEN-LAST:event_editOptionMouseClicked
-
-    private void editOptionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editOptionMouseEntered
-        editOptionIsHover = true;
-        updateOptionUI();
-    }//GEN-LAST:event_editOptionMouseEntered
-
-    private void editOptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editOptionMouseExited
-        editOptionIsHover = false;
-        updateOptionUI();
-    }//GEN-LAST:event_editOptionMouseExited
-
-    private Point initialClick;
     private void topPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMouseDragged
         int thisX = getLocation().x;
         int thisY = getLocation().y;
@@ -567,10 +477,72 @@ public class Window extends javax.swing.JFrame {
         setLocation(X, Y);
     }//GEN-LAST:event_topPanelMouseDragged
 
-    private void topPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMousePressed
-        initialClick = evt.getPoint();
-        getComponentAt(initialClick);
-    }//GEN-LAST:event_topPanelMousePressed
+    private void helpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpMouseExited
+        help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mindlabor/frac/main/ui/assets/information-icon4.png")));
+    }//GEN-LAST:event_helpMouseExited
+
+    private void helpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpMouseEntered
+        help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mindlabor/frac/main/ui/assets/information-icon3.png")));
+    }//GEN-LAST:event_helpMouseEntered
+
+    private void helpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpMouseClicked
+        Window.previewOptionIsActive = false;
+        Window.settingsOptionIsActive = false;
+        Window.editOptionIsActive = false;
+        Window.wikiOptionIsActive = false;
+        updateOptionUI();
+
+        Window.setOptionPanel("info");
+    }//GEN-LAST:event_helpMouseClicked
+
+    private void minimizeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseReleased
+        if (!dragged) {
+            setState(Frame.ICONIFIED);
+        }
+        dragged = false;
+    }//GEN-LAST:event_minimizeMouseReleased
+
+    private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
+        minimize.setBackground(new Color(122, 72, 221));
+    }//GEN-LAST:event_minimizeMouseExited
+
+    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
+        minimize.setBackground(new Color(255, 204, 0));
+    }//GEN-LAST:event_minimizeMouseEntered
+
+    private void minimizeMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseDragged
+        dragged = true;
+    }//GEN-LAST:event_minimizeMouseDragged
+
+    private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
+        if (!dragged) {
+            //Save all Data
+            System.exit(0);
+        }
+        dragged = false;
+    }//GEN-LAST:event_closeMouseReleased
+
+    private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        close.setBackground(new Color(122, 72, 221));
+    }//GEN-LAST:event_closeMouseExited
+
+    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
+        close.setBackground(new Color(204, 0, 0));
+    }//GEN-LAST:event_closeMouseEntered
+
+    private void closeMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseDragged
+        dragged = true;
+    }//GEN-LAST:event_closeMouseDragged
+
+    private void wikiOptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wikiOptionMouseExited
+        wikiOptionIsHover = false;
+        updateOptionUI();
+    }//GEN-LAST:event_wikiOptionMouseExited
+
+    private void wikiOptionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wikiOptionMouseEntered
+        wikiOptionIsHover = true;
+        updateOptionUI();
+    }//GEN-LAST:event_wikiOptionMouseEntered
 
     private void wikiOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wikiOptionMouseClicked
         wikiOptionIsActive = true;
@@ -579,16 +551,6 @@ public class Window extends javax.swing.JFrame {
 
         setOptionPanel("wiki");
     }//GEN-LAST:event_wikiOptionMouseClicked
-
-    private void wikiOptionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wikiOptionMouseEntered
-        wikiOptionIsHover = true;
-        updateOptionUI();
-    }//GEN-LAST:event_wikiOptionMouseEntered
-
-    private void wikiOptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wikiOptionMouseExited
-        wikiOptionIsHover = false;
-        updateOptionUI();
-    }//GEN-LAST:event_wikiOptionMouseExited
 
     private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
         initialClick = evt.getPoint();
@@ -607,24 +569,70 @@ public class Window extends javax.swing.JFrame {
         setLocation(X, Y);
     }//GEN-LAST:event_jLabel7MouseDragged
 
-    private void helpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpMouseClicked
-        Window.previewOptionIsActive = false;
-        Window.settingsOptionIsActive = false;
-        Window.editOptionIsActive = false;
-        Window.wikiOptionIsActive = false;
+    private void editOptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editOptionMouseExited
+        editOptionIsHover = false;
+        updateOptionUI();
+    }//GEN-LAST:event_editOptionMouseExited
+
+    private void editOptionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editOptionMouseEntered
+        editOptionIsHover = true;
+        updateOptionUI();
+    }//GEN-LAST:event_editOptionMouseEntered
+
+    private void editOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editOptionMouseClicked
+        editOptionIsActive = true;
+        previewOptionIsActive = settingsOptionIsActive = wikiOptionIsActive = false;
         updateOptionUI();
 
-        Window.setOptionPanel("info");
-    }//GEN-LAST:event_helpMouseClicked
+        setOptionPanel("edit");
 
-    private void helpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpMouseEntered
-        help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ml/mindprojects/frac/community/main/ui/assets/information-icon3.png")));
-    }//GEN-LAST:event_helpMouseEntered
+        setUpdated(true);
+    }//GEN-LAST:event_editOptionMouseClicked
 
-    private void helpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpMouseExited
-        help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ml/mindprojects/frac/community/main/ui/assets/information-icon4.png")));
-    }//GEN-LAST:event_helpMouseExited
+    private void settingsOptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsOptionMouseExited
+        settingsOptionIsHover = false;
+        updateOptionUI();
+    }//GEN-LAST:event_settingsOptionMouseExited
 
+    private void settingsOptionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsOptionMouseEntered
+        settingsOptionIsHover = true;
+        updateOptionUI();
+    }//GEN-LAST:event_settingsOptionMouseEntered
+
+    private void settingsOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsOptionMouseClicked
+        settingsOptionIsActive = true;
+        previewOptionIsActive = editOptionIsActive = wikiOptionIsActive = false;
+        updateOptionUI();
+
+        setOptionPanel("settings");
+    }//GEN-LAST:event_settingsOptionMouseClicked
+
+    private void previewOptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previewOptionMouseExited
+        previewOptionIsHover = false;
+        updateOptionUI();
+    }//GEN-LAST:event_previewOptionMouseExited
+
+    private void previewOptionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previewOptionMouseEntered
+        previewOptionIsHover = true;
+        updateOptionUI();
+    }//GEN-LAST:event_previewOptionMouseEntered
+
+    private void previewOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previewOptionMouseClicked
+        previewOptionIsActive = true;
+        settingsOptionIsActive = editOptionIsActive = wikiOptionIsActive = false;
+        updateOptionUI();
+
+        setOptionPanel("renderPane");
+
+        setUpdated(true);
+    }//GEN-LAST:event_previewOptionMouseClicked
+
+    public static void setProgress(double percent) {
+        Window.progressBar.setBounds(Window.progressBar.getX(), Window.progressBar.getY(), (int)(percent*979.0)+1, Window.progressBar.getHeight());
+    }
+    
+    private boolean dragged = false;
+    private Point initialClick;
     public static void setOptionPanel(String panel) {
         CardLayout layout = (CardLayout) mainPane.getLayout();
         layout.show(mainPane, panel);
@@ -691,6 +699,7 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JPanel masterPanel;
     private javax.swing.JPanel minimize;
     private javax.swing.JPanel previewOption;
+    private static javax.swing.JPanel progressBar;
     private javax.swing.JPanel settingsOption;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel topPanel;

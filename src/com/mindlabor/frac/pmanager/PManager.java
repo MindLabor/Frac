@@ -1,13 +1,3 @@
-/*
- *  Frac Community Edition 2019 by MindProjects
- *  
- *  Copyright (C) MindProjects - All Rights Reserved
- *  
- *  Unauthorized copying of this file, via any medium is strictly prohibited
- *  Proprietary and confidential
- *  
- *  Written by Samuel Braun <office.samigo.a@gmail.com>, January 2019
- */
 package com.mindlabor.frac.pmanager;
 
 import com.mindlabor.frac.renderer.Renderer;
@@ -19,10 +9,6 @@ import com.mindlabor.frac.main.ui.Settings;
 import com.mindlabor.frac.main.ui.Window;
 import com.mindlabor.frac.renderer.ImageManipulator;
 
-/**
- *
- * @author Samuel Braun <MindProjects at www.mindprojects.ml>
- */
 public class PManager implements Runnable {
 
     public static BufferedImage fractal, miniFractal;
@@ -39,11 +25,7 @@ public class PManager implements Runnable {
                 width = Edit.miniPreview.getWidth();
                 height = Edit.miniPreview.getHeight();
                 int cache = calcMaxIter();
-                if(Settings.iterations>cache)
-                    iterations = cache;
-                else
-                    iterations = Settings.iterations;
-                
+                iterations = Settings.iterations>cache? cache : Settings.iterations;
             } else {
                 width = Window.width;
                 height = Window.height;
@@ -94,7 +76,7 @@ public class PManager implements Runnable {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            e.printStackTrace(System.out);
             return false;
         }
         return true;
