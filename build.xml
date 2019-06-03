@@ -9,7 +9,7 @@
 <!-- in the project's Project Properties dialog box.-->
 <project name="Frac_Community_2019" default="default" basedir=".">
     <description>Builds, tests, and runs the project Frac Community 2019.</description>
-    <import file="nbproject/build-impl.xml"/>
+    <import file="nbproject/build-impl.xml" />
     <!--
 
     There exist several targets which are by default empty and which can be 
@@ -70,40 +70,48 @@
     nbproject/build-impl.xml file. 
 
     -->
-	<target name="package-for-store" depends="jar">
+    <target name="package-for-store" depends="jar">
+        <property name="store.jar.name" value="Frac_2019" />
 
-        <!-- Change the value of this property to be the name of your JAR,
-             minus the .jar extension. It should not have spaces.
-             <property name="store.jar.name" value="MyJarName"/>
-        -->
-        <property name="store.jar.name" value="Frac_Community_2019"/>
+        <property name="store.dir" value="store" />
+        <property name="store.jar" value="${store.dir}/${store.jar.name}.jar" />
 
+        <echo message="Packaging ${application.title} into a single JAR at ${store.jar}" />
 
-        <!-- don't edit below this line -->
-
-        <property name="store.dir" value="store"/>
-        <property name="store.jar" value="${store.dir}/${store.jar.name}.jar"/>
-
-        <echo message="Packaging ${application.title} into a single JAR at ${store.jar}"/>
-
-        <delete dir="${store.dir}"/>
-        <mkdir dir="${store.dir}"/>
+        <delete dir="${store.dir}" />
+        <mkdir dir="${store.dir}" />
 
         <jar destfile="${store.dir}/temp_final.jar" filesetmanifest="skip">
-            <zipgroupfileset dir="dist" includes="*.jar"/>
-            <zipgroupfileset dir="dist/lib" includes="*.jar"/>
+            <zipgroupfileset dir="dist" includes="*.jar" />
+            <zipgroupfileset dir="dist/lib" includes="*.jar" />
 
             <manifest>
-                <attribute name="Main-Class" value="${main.class}"/>
+                <attribute name="Main-Class" value="${main.class}" />
             </manifest>
         </jar>
 
         <zip destfile="${store.jar}">
-            <zipfileset src="${store.dir}/temp_final.jar"
-            excludes="META-INF/*.SF, META-INF/*.DSA, META-INF/*.RSA"/>
+            <zipfileset src="${store.dir}/temp_final.jar" excludes="META-INF/*.SF, META-INF/*.DSA, META-INF/*.RSA" />
         </zip>
 
-        <delete file="${store.dir}/temp_final.jar"/>
+        <delete file="${store.dir}/temp_final.jar" />
 
+    </target>
+    <target name="-post-jar">
+        <property name="store.jar.name" value="MindLab - Frac2019" />
+        <property name="store.dir" value="release" />
+        <property name="store.jar" value="${store.dir}/${store.jar.name}.jar" />
+        <echo message="Packaging ${application.title} into a single JAR at ${store.jar}" />
+        <jar destfile="${store.dir}/temp_final.jar" filesetmanifest="skip">
+            <zipgroupfileset dir="release" includes="*.jar" />
+            <zipgroupfileset dir="release/lib" includes="*.jar" />
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}" />
+            </manifest>
+        </jar>
+        <zip destfile="${store.jar}">
+            <zipfileset src="${store.dir}/temp_final.jar" excludes="META-INF/*.SF, META-INF/*.DSA, META-INF/*.RSA" />
+        </zip>
+        <delete file="${store.dir}/temp_final.jar" />
     </target>
 </project>
