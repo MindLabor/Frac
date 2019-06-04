@@ -1,29 +1,13 @@
-/* 
- * Frac Community Edition 2019 by MindProjects
- * 
- * Copyright (C) MindProjects - All Rights Reserved
- * 
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * 
- * Written by Samuel Braun <office.samigo.a@gmail.com>, January 2019
- */
+
 package com.mindlabor.frac.main.ui;
 
-import java.awt.Color;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Samuel Braun <MindProjects at www.mindprojects.ml>
- */
 public class Edit extends javax.swing.JPanel 
 {
 
-    public static enum COLOR_MODE {HSV, RGB}
     public static enum BLEND_MODE {MULTIPLY, ADD, MIX}
     public static enum COLOR_SELECTION {NORMAL, SMOOTH, DUAL}
-    public static COLOR_MODE colorMode = COLOR_MODE.HSV;
     public static BLEND_MODE blendMode = BLEND_MODE.MULTIPLY;
     public static COLOR_SELECTION colorSelection = COLOR_SELECTION.NORMAL;
     public static float color1 = 0f, color2 = 1f, color3 = 1f, strength = 0, radius = 0;
@@ -52,14 +36,11 @@ public class Edit extends javax.swing.JPanel
         c3Slider = new javax.swing.JSlider();
         jLabel2 = new javax.swing.JLabel();
         colorSelectionCombo = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
         colorLabel4 = new javax.swing.JLabel();
         colorLabel5 = new javax.swing.JLabel();
         bl1Slider = new javax.swing.JSlider();
         bl2Slider = new javax.swing.JSlider();
         jLabel4 = new javax.swing.JLabel();
-        blendModeCombo = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         previewQualitySlider = new javax.swing.JSlider();
@@ -173,9 +154,6 @@ public class Edit extends javax.swing.JPanel
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Blend");
-
         colorLabel4.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         colorLabel4.setText("Strength");
         colorLabel4.setPreferredSize(new java.awt.Dimension(82, 35));
@@ -214,17 +192,6 @@ public class Edit extends javax.swing.JPanel
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Mode");
-
-        blendModeCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        blendModeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Multiply", "Add", "Mix" }));
-        blendModeCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                blendModeComboActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Roboto Light", 0, 11)); // NOI18N
-        jLabel6.setText("<html>The blend mode determines how to mix the <br> colors above with the standard fractal.</html>");
 
         jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 11)); // NOI18N
         jLabel7.setText("<html>The mode can modify the color selection rule.</html>");
@@ -275,28 +242,19 @@ public class Edit extends javax.swing.JPanel
                                         .addComponent(colorLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(colorLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(95, 95, 95)
+                                .addGap(96, 96, 96)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(colorSelectionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(10, 10, 10)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(10, 10, 10)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(blendModeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(previewQualitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(colorSelectionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(previewQualitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -331,17 +289,13 @@ public class Edit extends javax.swing.JPanel
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(blendModeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addComponent(miniPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(previewQualitySlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(miniPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68))
+                            .addComponent(previewQualitySlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(161, 161, 161))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -350,19 +304,15 @@ public class Edit extends javax.swing.JPanel
     }
     
     private void colorModeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorModeLabelMouseClicked
-        COLOR_MODE[] colorModes = COLOR_MODE.values();
-        int nextIndex = (colorMode.ordinal()+1)%colorModes.length;
-        colorMode = colorModes[nextIndex];
-        updateColorModeUI();
-        updated = true;
+        
     }//GEN-LAST:event_colorModeLabelMouseClicked
 
     private void colorModeLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorModeLabelMouseEntered
-        colorModePanel.setBackground(new Color(122,0,122));
+        
     }//GEN-LAST:event_colorModeLabelMouseEntered
 
     private void colorModeLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorModeLabelMouseExited
-        colorModePanel.setBackground(new Color(102,0,102));
+        
     }//GEN-LAST:event_colorModeLabelMouseExited
 
     private void c1SliderMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c1SliderMouseReleased
@@ -390,11 +340,6 @@ public class Edit extends javax.swing.JPanel
         onlyColorUpdated = true;
     }//GEN-LAST:event_bl2SliderMouseReleased
 
-    private void blendModeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blendModeComboActionPerformed
-        blendMode = BLEND_MODE.values()[blendModeCombo.getSelectedIndex()];
-        onlyColorUpdated = true;
-    }//GEN-LAST:event_blendModeComboActionPerformed
-
     private void colorSelectionComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorSelectionComboActionPerformed
         colorSelection = COLOR_SELECTION.values()[colorSelectionCombo.getSelectedIndex()];
         updated = true;
@@ -405,27 +350,9 @@ public class Edit extends javax.swing.JPanel
         updated = true;
     }//GEN-LAST:event_previewQualitySliderMouseReleased
 
-    private void updateColorModeUI(){
-        switch(colorMode){
-            case HSV:
-                colorModeLabel.setText("H S V");
-                colorLabel1.setText("Hue");
-                colorLabel2.setText("Saturation");
-                colorLabel3.setText("Value");
-                break;
-            case RGB:
-                colorModeLabel.setText("R G B");
-                colorLabel1.setText("Red");
-                colorLabel2.setText("Green");
-                colorLabel3.setText("Blue");
-                break;
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSlider bl1Slider;
     private javax.swing.JSlider bl2Slider;
-    private javax.swing.JComboBox<String> blendModeCombo;
     private javax.swing.JSlider c1Slider;
     private javax.swing.JSlider c2Slider;
     private javax.swing.JSlider c3Slider;
@@ -439,10 +366,8 @@ public class Edit extends javax.swing.JPanel
     private javax.swing.JComboBox<String> colorSelectionCombo;
     private javax.swing.JLabel jLabe1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JLabel miniPreview;

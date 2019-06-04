@@ -7,7 +7,6 @@ import com.mindlabor.frac.main.ui.Edit;
 import com.mindlabor.frac.main.ui.Settings;
 import com.mindlabor.frac.math.Complex;
 import static com.mindlabor.frac.main.Main.*;
-import com.mindlabor.frac.main.ui.RenderPane;
 import com.mindlabor.frac.main.ui.Window;
 import com.mindlabor.frac.math.Tools;
 import com.mindlabor.frac.pmanager.PManager;

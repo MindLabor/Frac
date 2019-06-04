@@ -45,6 +45,7 @@ public class PManager implements Runnable {
                 Window.setUpdated(true);
             }
             
+            System.gc();
         }
     }
 
@@ -61,11 +62,11 @@ public class PManager implements Runnable {
     public void updateColor() {
         if (Window.editOptionIsActive || Window.firstminiRender) {
             if (miniFractal != null) {
-                updatePreview(ImageManipulator.mix(Edit.color1, Edit.color2, Edit.color3, miniFractal));
+                updatePreview(ImageManipulator.blur(ImageManipulator.mix(Edit.color1, Edit.color2, Edit.color3, miniFractal)));
             }
         } else {
             if (fractal != null) {
-                updatePreview(ImageManipulator.mix(Edit.color1, Edit.color2, Edit.color3, fractal));
+                updatePreview(ImageManipulator.blur(ImageManipulator.mix(Edit.color1, Edit.color2, Edit.color3, fractal)));
             }
         }
 

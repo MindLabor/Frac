@@ -343,7 +343,7 @@ public class Settings extends javax.swing.JPanel {
             attachError(coordinatesInput, true, "Complex: cache is null");
         } catch (MathParseException | NullPointerException e) {
             attachError(coordinatesInput, true, "Is not complex");
-            e.printStackTrace();
+            e.printStackTrace(System.out);
         }
     }//GEN-LAST:event_coordinatesInputKeyReleased
 
@@ -368,7 +368,7 @@ public class Settings extends javax.swing.JPanel {
             Double.parseDouble(input);
             return true;
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            e.printStackTrace(System.out);
             return false;
         }
     }
@@ -378,7 +378,7 @@ public class Settings extends javax.swing.JPanel {
             Integer.parseInt(input);
             return true;
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            e.printStackTrace(System.out);
             return false;
         }
     }
