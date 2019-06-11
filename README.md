@@ -1,5 +1,5 @@
 # Frac
-Frac is a modern designed application for creating fractals very easily. (still in Progress)
+Frac is a modern designed application for creating fractals very easily. (Netbeans IDE)
 
 ## Installation
 1. Download the File `release/MindLab - Frac2019.jar`.
