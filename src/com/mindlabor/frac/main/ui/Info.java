@@ -1,25 +1,9 @@
-/* 
- * Frac Community Edition 2019 by MindProjects
- * 
- * Copyright (C) MindProjects - All Rights Reserved
- * 
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * 
- * Written by Samuel Braun <office.samigo.a@gmail.com>, January 2019
- */
 package com.mindlabor.frac.main.ui;
 
-/**
- *
- * @author Samuel Braun <MindProjects at www.mindprojects.ml>
- */
 public class Info extends javax.swing.JPanel {
 
     public Info() {
         initComponents();
-        //Clouds aren't spheres, mountains aren't cones, coastlines aren't circles and bark isn't smooth, just as lightning is not on a straight line.
-        //cite.setIcon(Wiki.getLaTeX("\\begin{quote}Clouds are not spheres, mountains are not cones, coastlines are not circles and bark is not smooth, just as lightning is not on a straight line. \\end{quote}", 15));
     }
 
     @SuppressWarnings("unchecked")

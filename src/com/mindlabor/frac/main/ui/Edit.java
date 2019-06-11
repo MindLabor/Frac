@@ -1,4 +1,3 @@
-
 package com.mindlabor.frac.main.ui;
 
 import javax.swing.ImageIcon;

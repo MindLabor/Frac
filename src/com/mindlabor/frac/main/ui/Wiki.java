@@ -1,13 +1,3 @@
-/* 
- * Frac Community Edition 2019 by MindProjects
- * 
- * Copyright (C) MindProjects - All Rights Reserved
- * 
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * 
- * Written by Samuel Braun <office.samigo.a@gmail.com>, January 2019
- */
 package com.mindlabor.frac.main.ui;
 
 import java.awt.Graphics2D;
@@ -17,10 +7,6 @@ import org.scilab.forge.jlatexmath.TeXConstants;
 import org.scilab.forge.jlatexmath.TeXFormula;
 import org.scilab.forge.jlatexmath.TeXIcon;
 
-/**
- *
- * @author Samuel Braun <MindProjects at www.mindprojects.ml>
- */
 public class Wiki extends javax.swing.JPanel {
 
     public Wiki() {

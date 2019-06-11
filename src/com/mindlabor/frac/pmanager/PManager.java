@@ -8,11 +8,14 @@ import com.mindlabor.frac.main.ui.RenderPane;
 import com.mindlabor.frac.main.ui.Settings;
 import com.mindlabor.frac.main.ui.Window;
 import com.mindlabor.frac.renderer.ImageManipulator;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class PManager implements Runnable {
 
-    public static BufferedImage fractal, miniFractal;
-    public static boolean running = true;
+    public static BufferedImage fractal, miniFractal, saveFractal;
+    public static boolean running = true, exportMode = false;
     public static int width, height, iterations;
 
     public PManager() {
@@ -21,15 +24,23 @@ public class PManager implements Runnable {
     @Override
     public void run() {
         while (running) {
-            if (Window.editOptionIsActive || Window.firstminiRender) {
+            if ((Window.editOptionIsActive || Window.firstminiRender) && !exportMode) {
                 width = Edit.miniPreview.getWidth();
                 height = Edit.miniPreview.getHeight();
                 int cache = calcMaxIter();
                 iterations = Settings.iterations>cache? cache : Settings.iterations;
-            } else {
+            } else if (!exportMode) {
                 width = Window.width;
                 height = Window.height;
                 iterations = Settings.iterations;
+            } else {
+                width = Window.widthh;
+                height = Window.heightt;
+                Edit.previewQuality = 7;
+                render();
+                exportMode = false;
+                System.gc();
+                continue;
             }
             
             if (Edit.onlyColorUpdated) {
@@ -44,32 +55,42 @@ public class PManager implements Runnable {
                 Window.firstminiRender = false;
                 Window.setUpdated(true);
             }
-            
             System.gc();
         }
     }
 
     public void render() {
-        if (Window.editOptionIsActive || Window.firstminiRender) {
-            miniFractal = new Renderer(true).render();
+        if ((Window.editOptionIsActive || Window.firstminiRender) && !exportMode) {
+            miniFractal = new Renderer().render();
+        } else if (!exportMode) {
+            fractal = new Renderer().render();
         } else {
-            fractal = new Renderer(false).render();
-        }
+            saveFractal = new Renderer().render();
+        } 
         
         updateColor();
     }
 
     public void updateColor() {
-        if (Window.editOptionIsActive || Window.firstminiRender) {
+        if ((Window.editOptionIsActive || Window.firstminiRender) && !exportMode) {
             if (miniFractal != null) {
                 updatePreview(ImageManipulator.blur(ImageManipulator.mix(Edit.color1, Edit.color2, Edit.color3, miniFractal)));
             }
-        } else {
+        } else if (!exportMode) {
             if (fractal != null) {
                 updatePreview(ImageManipulator.blur(ImageManipulator.mix(Edit.color1, Edit.color2, Edit.color3, fractal)));
             }
+        } else {
+            if (saveFractal != null) {
+                saveFractal = ImageManipulator.blur(ImageManipulator.mix(Edit.color1, Edit.color2, Edit.color3, saveFractal));
+                try {
+                    ImageIO.write(PManager.saveFractal, "png", new File(Window.namee + ".png"));
+                } catch (IOException ex) {
+                    System.out.println("ERRRRRRRRRRRRRREEEEEEOEOEOEOEO!!!!!!!");
+                    ex.printStackTrace();
+                }
+            }
         }
-
         
     }
 

@@ -17,12 +17,9 @@ public class Renderer implements Runnable {
     public static double[] progressInThreads = new double[Main.AVAILABLE_CORES];
     public static Thread[] threads = new Thread[Main.AVAILABLE_CORES];
     public static BufferedImage image;
-    public static boolean miniOption = false;
     int threadIndex = 0;
 
-    public Renderer(boolean miniOption) {
-        Renderer.miniOption = miniOption;
-    }
+    public Renderer() { }
     public Renderer(int index) {
         threadIndex = index;
     }

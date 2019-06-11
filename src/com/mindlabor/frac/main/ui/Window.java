@@ -7,6 +7,8 @@ import java.awt.Point;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import com.mindlabor.frac.pmanager.PManager;
+import java.io.File;
+import javax.swing.JOptionPane;
 
 public class Window extends javax.swing.JFrame {
 
@@ -69,6 +71,7 @@ public class Window extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         wikiOption = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        export = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         close = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -258,6 +261,28 @@ public class Window extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        export.setBackground(new java.awt.Color(54, 33, 89));
+        export.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        export.setForeground(new java.awt.Color(255, 255, 255));
+        export.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        export.setText("Save");
+        export.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        export.setOpaque(true);
+        export.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exportMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exportMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                exportMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                exportMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
         sidePanel.setLayout(sidePanelLayout);
         sidePanelLayout.setHorizontalGroup(
@@ -267,6 +292,10 @@ public class Window extends javax.swing.JFrame {
             .addComponent(editOption, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(wikiOption, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+            .addGroup(sidePanelLayout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(export, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +309,9 @@ public class Window extends javax.swing.JFrame {
                 .addComponent(editOption, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(wikiOption, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(129, 129, 129))
+                .addGap(38, 38, 38)
+                .addComponent(export, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
         topPanel.setBackground(new java.awt.Color(122, 72, 221));
@@ -325,7 +356,7 @@ public class Window extends javax.swing.JFrame {
         );
         closeLayout.setVerticalGroup(
             closeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         minimize.setBackground(new java.awt.Color(122, 72, 221));
@@ -387,9 +418,9 @@ public class Window extends javax.swing.JFrame {
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(help, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(help, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(minimize, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -398,11 +429,11 @@ public class Window extends javax.swing.JFrame {
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(close, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-            .addComponent(minimize, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+            .addComponent(close, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+            .addComponent(minimize, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(help)
+                .addContainerGap()
+                .addComponent(help, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -440,8 +471,8 @@ public class Window extends javax.swing.JFrame {
             .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(masterPanelLayout.createSequentialGroup()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(mainPane, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(mainPane, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -627,6 +658,54 @@ public class Window extends javax.swing.JFrame {
         setUpdated(true);
     }//GEN-LAST:event_previewOptionMouseClicked
 
+    private void exportMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exportMouseEntered
+        export.setBackground(Color.WHITE);
+        export.setForeground(new Color(54, 33, 89));
+    }//GEN-LAST:event_exportMouseEntered
+
+    private void exportMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exportMouseExited
+        export.setBackground(new Color(54, 33, 89));
+        export.setForeground(Color.WHITE);
+    }//GEN-LAST:event_exportMouseExited
+
+    private void exportMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exportMousePressed
+        export.setBackground(new Color(225, 225, 225));
+    }//GEN-LAST:event_exportMousePressed
+
+    public static String namee = "image";
+    public static int widthh = 1920, heightt = 1080;
+    private void exportMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exportMouseReleased
+        export.setBackground(Color.WHITE);
+        int tries = 3;
+        // Popup Resolution
+        namee = JOptionPane.showInputDialog(this, "Name: ");
+        if (namee==null) {return; }
+        namee = new File("").getAbsolutePath()+"\\IMAGES\\"+namee;
+        
+        while (tries>0){
+            try{
+                String cc = JOptionPane.showInputDialog(this, "Width: ");
+                if (cc==null) {return; }
+                widthh = Integer.parseInt(cc);
+                break;
+            }
+            catch(Exception e){tries--;}
+        }
+        if(tries==0) return;
+        tries = 3;
+        while (tries>0){
+            try{
+                String cc = JOptionPane.showInputDialog(this, "Width: ");
+                if (cc==null) return;
+                heightt = Integer.parseInt(cc);
+                break;
+            }
+            catch(Exception e){tries--;}
+        }
+        if(tries==0) return;
+        PManager.exportMode = true;
+    }//GEN-LAST:event_exportMouseReleased
+
     public static void setProgress(double percent) {
         Window.progressBar.setBounds(Window.progressBar.getX(), Window.progressBar.getY(), (int)(percent*979.0)+1, Window.progressBar.getHeight());
     }
@@ -686,6 +765,7 @@ public class Window extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel close;
     private javax.swing.JPanel editOption;
+    private javax.swing.JLabel export;
     private javax.swing.JLabel help;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

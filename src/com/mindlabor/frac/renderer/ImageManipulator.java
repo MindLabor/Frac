@@ -12,7 +12,6 @@ import java.awt.image.Kernel;
 public class ImageManipulator {
     
     public static float progress = 0;
-
     
     public static BufferedImage blur(BufferedImage src) {
         if(Edit.strength==0 || Edit.radius==0) return src;
