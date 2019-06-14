@@ -395,7 +395,7 @@ public class Window extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Untitled - Frac 2019");
+        jLabel6.setText("Frac 2019");
 
         help.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mindlabor/frac/main/ui/assets/information-icon4.png"))); // NOI18N
