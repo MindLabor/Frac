@@ -7,6 +7,7 @@ import com.mindlabor.frac.main.ui.Edit;
 import com.mindlabor.frac.main.ui.Settings;
 import com.mindlabor.frac.math.Complex;
 import static com.mindlabor.frac.main.Main.*;
+import static com.mindlabor.frac.main.ui.Settings.TYPE.NEWTON;
 import com.mindlabor.frac.main.ui.Window;
 import com.mindlabor.frac.math.Tools;
 import com.mindlabor.frac.pmanager.PManager;
@@ -71,8 +72,14 @@ public class Renderer implements Runnable {
                 int currentIteration = -1;
                 boolean abort = true;
                 while (abort && ++currentIteration < PManager.iterations) {
-                    z = applyFormula(z, c);
-                    abort = applyTerminationCondition(z, c);
+                    if(Settings.type == NEWTON){
+                        Complex z_cache = applyNewtonMethod(z);
+                        abort = applyTerminationCondition(z, z_cache);
+                        z = z_cache;
+                    }else{
+                        z = applyFormula(z, c);
+                        abort = applyTerminationCondition(z, c);
+                    }
                 }
                 if (currentIteration < PManager.iterations)
                     setRGBForRegion(x, y, getColor(z, currentIteration), (threadIndex+1)*(PManager.width/AVAILABLE_CORES));
@@ -98,7 +105,7 @@ public class Renderer implements Runnable {
         switch(Settings.type){
             case GEOM: case MANDELBROT: return new Complex(Tools.map(x, 0, PManager.width, minX, maxX), -Tools.map(y, 0, PManager.height, maxY, minY));
             case JULIA: return new Complex(Math.cos(Renderer.theta), Math.sin(Renderer.theta));
-            case NEWTON: break;
+            case NEWTON: return new Complex(0.000001, 0.000001);
         }
         return null;
     }
@@ -107,7 +114,7 @@ public class Renderer implements Runnable {
         switch(Settings.type){
             case GEOM: case MANDELBROT: return new Complex(0, 0);
             case JULIA: return new Complex(1.5 * (x - PManager.width / 2) / (0.5 * PManager.width), (y - PManager.height / 2) / (0.5 * PManager.height));
-            case NEWTON: break;
+            case NEWTON: return new Complex(x * (maxX - minX) / (PManager.width - 1) + minX, y * (maxY - minY) / (PManager.height - 1) + minY);
         }
         return null;
     }
@@ -115,9 +122,13 @@ public class Renderer implements Runnable {
     Complex applyFormula(Complex z, Complex c){
         switch(Settings.type){
             case MANDELBROT:
+            case JULIA:
                 return z.times(z).plus(c); 
-            case NEWTON: break;
-            case JULIA: return z.times(z).plus(c);
+            case NEWTON: 
+                return z.times(z).times(z).minus(new Complex(1, 0));
+                        //z.times(z).times(z).times(z).times(z).minus(z); 
+                        //z.times(z).times(z).minus(z.times(new Complex(2, 0))).plus(new Complex(2, 0));
+                        //z.times(z).times(z).minus(new Complex(1, 0));
             case GEOM: 
                 if (z.abs()<1.5) return z.times(z).plus(c);
                 else return c.times(c).plus(z);
@@ -125,9 +136,19 @@ public class Renderer implements Runnable {
         return null;
     }
     
+    Complex applyNewtonMethod(Complex z) {
+        Complex dz = (applyFormula(z.plus(new Complex(0.000001, 0.000001)), null).minus(applyFormula(z, null))).divides(new Complex(0.000001, 0.000001));
+        return z.minus(applyFormula(z, null).divides(dz));
+    }
+    
     boolean applyTerminationCondition(Complex z, Complex c){
         switch(Settings.terminationCondition){
-            case NORMAL: return z.abs() < 4;
+            case NORMAL: 
+                if (Settings.type == NEWTON){
+                    return c.minus(z).abs() >= 0.001;
+                }else {
+                    return z.abs() < 4;
+                }
             case SPIKY: return Math.abs(z.im()) < 2 || Math.abs(z.re()) < 2;
         }
         return true;

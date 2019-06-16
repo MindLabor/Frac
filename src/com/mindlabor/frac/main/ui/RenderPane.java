@@ -1,5 +1,6 @@
 package com.mindlabor.frac.main.ui;
 
+import static com.mindlabor.frac.main.ui.Settings.TYPE.NEWTON;
 import javax.swing.ImageIcon;
 import com.mindlabor.frac.math.Complex;
 import com.mindlabor.frac.math.Tools;
@@ -75,8 +76,8 @@ public class RenderPane extends javax.swing.JPanel {
         if (dragged) {
             try {
                 switch (Settings.type) {
-                    case MANDELBROT: case GEOM:
-                        double mouseX = evt.getX(),
+                    case MANDELBROT: case GEOM: case NEWTON:
+                        double mouseX = evt.getX(), 
                          mouseY = evt.getY();
                         double dx = -(mouseX - startX),
                          dy = (mouseY - startY);
@@ -90,7 +91,7 @@ public class RenderPane extends javax.swing.JPanel {
                         dy = (dy * (maxY - minY)) * 1.0 / Window.height;
                         
                         //#################  SET NEW VALUES   ######################//
-                        Settings.coordinate = new Complex (Settings.coordinate.re()+dx, Settings.coordinate.im()+dy);
+                        Settings.coordinate = new Complex (Settings.coordinate.re()+dx, Settings.coordinate.im()+(Settings.type==NEWTON?-dy:dy));
                         Settings.coordinatesInput.setText(Settings.coordinate.toString());
                         break;
                 }
@@ -118,7 +119,7 @@ public class RenderPane extends javax.swing.JPanel {
         try {
             double newZoom;
             switch (Settings.type) {
-                case MANDELBROT: case GEOM:
+                case MANDELBROT: case GEOM: case NEWTON:
                     newZoom = (-(evt.getWheelRotation() * Settings.zoom / 2.0) * Settings.scrollVelo / 5f + Settings.zoom);
                     double mouseX = evt.getX(), mouseY = evt.getY();
 
