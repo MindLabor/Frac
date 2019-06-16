@@ -299,7 +299,7 @@ public class Settings extends javax.swing.JPanel {
     }//GEN-LAST:event_typeComboActionPerformed
 
     private void modeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeComboActionPerformed
-        TERMINATION cache = TERMINATION.values()[typeCombo.getSelectedIndex()];
+        TERMINATION cache = TERMINATION.values()[modeCombo.getSelectedIndex()];
         if(cache != terminationCondition){
             terminationCondition = cache;
             updated = true;

@@ -149,7 +149,8 @@ public class Renderer implements Runnable {
                 }else {
                     return z.abs() < 4;
                 }
-            case SPIKY: return Math.abs(z.im()) < 2 || Math.abs(z.re()) < 2;
+            case SPIKY: 
+                return Math.abs(z.im()) < 2 || Math.abs(z.re()) < 2;
         }
         return true;
     }
