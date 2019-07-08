@@ -6,9 +6,13 @@ public class Main
 {
     public static Window window;
     public static final int AVAILABLE_CORES = Runtime.getRuntime().availableProcessors();
+    public static boolean pluginMode = false;
             
-    public static void main(String args[]){
-        
+    public static void main(String args[]) {
+        new Main();
+    }
+    
+    public Main() {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         
         try {
@@ -27,7 +31,6 @@ public class Main
             window = new Window();
             window.setVisible(true);
         });
-        
     }
     
 }

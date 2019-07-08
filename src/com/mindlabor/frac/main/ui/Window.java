@@ -1,5 +1,6 @@
 package com.mindlabor.frac.main.ui;
 
+import com.mindlabor.frac.main.Main;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Frame;
@@ -28,16 +29,19 @@ public class Window extends javax.swing.JFrame {
     final Color optionActiveColor = new Color(85, 65, 118);
     final Color optionHoverColor = new Color(74, 54, 109);
     final Color optionDefaultColor = new Color(64, 43, 100);
-    final Settings settingsPanel = new Settings();
     final Edit editPanel = new Edit();
+    final Settings settingsPanel = new Settings();
+    final CustomSettings customSettingsPanel = new CustomSettings();
     public RenderPane renderPanePanel = new RenderPane();
     final Wiki wikiPanel = new Wiki();
     final Info infoPanel = new Info();
 
     public Window() {
         initComponents();
-
-        mainPane.add(settingsPanel, "settings");
+        
+        if (Main.pluginMode) 
+            mainPane.add(customSettingsPanel, "customSettings");
+        else mainPane.add(settingsPanel, "settings");
         mainPane.add(editPanel, "edit");
         mainPane.add(renderPanePanel, "renderPane");
         mainPane.add(wikiPanel, "wiki");
@@ -635,7 +639,9 @@ public class Window extends javax.swing.JFrame {
         previewOptionIsActive = editOptionIsActive = wikiOptionIsActive = false;
         updateOptionUI();
 
-        setOptionPanel("settings");
+        if (Main.pluginMode)
+            setOptionPanel("customSettings");
+        else setOptionPanel("settings");
     }//GEN-LAST:event_settingsOptionMouseClicked
 
     private void previewOptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_previewOptionMouseExited

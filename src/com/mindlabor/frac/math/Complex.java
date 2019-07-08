@@ -14,7 +14,23 @@ public class Complex {
         re = real;
         im = imag;
     }
-
+    
+    public Complex pow(double a) { // a^this
+    	return scale(Math.log(a)).exp();
+    }
+    
+    public void print() {
+        System.out.println(toString());
+    }
+    
+    public Complex sinh() {
+        return (exp().minus(scale(-1).exp()).divides(new Complex(2, 0)));
+    }
+    
+    public Complex sq(){
+        return this.times(this);
+    }
+    
     @Override
     public String toString() {
         if (im == 0) {
