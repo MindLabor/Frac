@@ -48,6 +48,14 @@ public class Complex {
     public double abs() {
         return re*re+im*im;
     }
+    
+    public Complex labs(){
+        if (im>=0) {
+            return this;
+        } else {
+            return conjugate();
+        }
+    }
 
     public double phase() {
         return Math.atan2(im, re);

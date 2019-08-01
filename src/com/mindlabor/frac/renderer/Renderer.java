@@ -151,7 +151,8 @@ public class Renderer implements Runnable {
         switch (Settings.type) {
             case MANDELBROT:
             case JULIA:
-                return z.times(z).plus(c.times(c));
+                
+                return z.labs().plus(c).log();// z.times(z).plus(c);
             //c.times(new Complex(0, 1).times(z).scale(2 * Math.PI * (iter - 20)).exp()); FOURIER
             //z.sq().plus(c); MANDELBROT
             case NEWTON:
